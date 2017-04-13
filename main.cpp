@@ -4,7 +4,7 @@
 #include <QLCDNumber>
 //#include "buf.h"
 #include "K1.h"
-#include "thread.h"
+#include <QThread>
 
 
 int main(int argc, char *argv[])
