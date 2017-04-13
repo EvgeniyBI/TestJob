@@ -2,10 +2,10 @@
 
 K1::K1()
 {
-
+connect(this ,&K1::getCharacters,this,&K1::onGetCharacters);
 }
 
-void K1::getCharacters(const std::string *str)
+void K1::onGetCharacters(const std::string *str)
 {
      QString dir = QString::fromUtf8(str->c_str());
      QFile file(dir);

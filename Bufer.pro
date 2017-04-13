@@ -26,5 +26,4 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
     buf.h \
-    k1.h \
-    thread.h
+    k1.h

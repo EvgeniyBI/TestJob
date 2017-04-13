@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
         qDebug() <<++p;
     }*/
     QLCDNumber  lsd;
-    ThreadK1 MyThread;
+    QThread MyThread;
     K1 p;
     QObject::connect(&p, SIGNAL(display(int)), &lsd, SLOT(display(int)));
     QObject::connect(&p, SIGNAL(finished()), &MyThread, SLOT(quit()));
@@ -41,6 +41,6 @@ int main(int argc, char *argv[])
     p.moveToThread(&MyThread);
     MyThread.start();
     std::string ss = "D:\\123.txt";
-    p.getCharacters(&ss);
+    emit p.getCharacters(&ss);
     return a.exec();
 }
