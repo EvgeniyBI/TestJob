@@ -1,10 +1,11 @@
 //#include <QCoreApplication>
 #include<QApplication>
+#include <QDebug>
 #include <iterator>
 #include <QLCDNumber>
+#include <QThread>
 //#include "buf.h"
 #include "K1.h"
-#include <QThread>
 
 
 int main(int argc, char *argv[])
@@ -29,18 +30,15 @@ int main(int argc, char *argv[])
         qDebug() <<++p;
     }*/
     QLCDNumber  lsd;
-    QThread MyThread;
     K1 p;
     QObject::connect(&p, SIGNAL(display(int)), &lsd, SLOT(display(int)));
-    QObject::connect(&p, SIGNAL(finished()), &MyThread, SLOT(quit()));
     lsd.setSegmentStyle(QLCDNumber::Filled);
     lsd.display(10);
     lsd.resize(220,90);
     lsd.show();
 
-    p.moveToThread(&MyThread);
-    MyThread.start();
-    std::string ss = "D:\\123.txt";
-    emit p.getCharacters(&ss);
+    qDebug() <<QThread::currentThreadId();
+    QString Directory = "D:\\123.txt";
+    emit p.getCharacters(Directory);
     return a.exec();
 }
