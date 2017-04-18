@@ -3,14 +3,14 @@
 #include <iterator>
 #include <QLCDNumber>
 #include <QThread>
-#include "K1.h"
+#include "SizeFile.h"
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QLCDNumber  lsd;
-    K1 loadFile;
+    SizeFile loadFile;
     QObject::connect(&loadFile, SIGNAL(display(int)), &lsd, SLOT(display(int)));
     lsd.setSegmentStyle(QLCDNumber::Filled);
     lsd.display(10);

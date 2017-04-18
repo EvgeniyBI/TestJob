@@ -1,15 +1,15 @@
-#include <k1.h>
+#include <SizeFile.h>
 
-K1::K1()
+SizeFile::SizeFile()
 {
-connect (this ,&K1::getCharacters,this,&K1::onGetCharacters);
-connect (this, &K1::finished, &MyThread, &QThread::quit);
+connect (this ,&SizeFile::getCharacters,this,&SizeFile::onGetCharacters);
+connect (this, &SizeFile::finished, &MyThread, &QThread::quit);
 
 this->moveToThread(&MyThread);
 MyThread.start();
 }
 
-void K1::onGetCharacters(const QString &str)
+void SizeFile::onGetCharacters(const QString &str)
 {
      qDebug() <<QThread::currentThreadId();
      QFile file(str);

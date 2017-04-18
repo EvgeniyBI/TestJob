@@ -4,11 +4,11 @@
 #include <QThread>
 #include <QFile>
 
-class K1: public QObject
+class SizeFile: public QObject
 {
     Q_OBJECT
 public:
-    K1();
+    SizeFile();
 protected:
     QThread MyThread;
 
