@@ -1,24 +1,18 @@
 #include<QApplication>
 #include <QDebug>
+#include <QTest>
 #include <iterator>
 #include <QLCDNumber>
 #include <QThread>
 #include "SizeFile.h"
+//#include "test_sizefile.h"
 
 
 int main(int argc, char *argv[])
 {
+    freopen("testing.log", "w", stdout);
     QApplication a(argc, argv);
-    QLCDNumber  lsd;
-    SizeFile loadFile;
-    QObject::connect(&loadFile, SIGNAL(display(int)), &lsd, SLOT(display(int)));
-    lsd.setSegmentStyle(QLCDNumber::Filled);
-    lsd.display(10);
-    lsd.resize(220,90);
-    lsd.show();
+    QTest::qExec(new test_sizefile, argc, argv);
 
-    qDebug() <<QThread::currentThreadId();
-    QString Directory = "D:\\123.txt";
-    loadFile.getCharacters(Directory);
-    return a.exec();
+    return 0;
 }
